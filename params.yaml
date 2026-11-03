@@ -1,0 +1,29 @@
+gaussian:
+  sigma15:
+    sigma: 0.6931576579674332
+    truncate: 3.0
+  sigma25:
+    sigma: 0.8826173419792765
+    truncate: 3.0
+  sigma50:
+    sigma: 1.3274414292574908
+    truncate: 3.0
+nlm:
+  sigma15:
+    fast_mode: true
+    h: 14.645384938719355
+    patch_distance: 4
+    patch_size: 5
+    sigma_255: 0.0
+  sigma25:
+    fast_mode: true
+    h: 21.307884913175414
+    patch_distance: 6
+    patch_size: 5
+    sigma_255: 0.0
+  sigma50:
+    fast_mode: true
+    h: 42.31924811663865
+    patch_distance: 4
+    patch_size: 5
+    sigma_255: 0.0

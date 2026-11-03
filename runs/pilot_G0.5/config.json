@@ -1,0 +1,49 @@
+{
+  "train_dir": "data/BSD400",
+  "split_file": "data/bsd400_split.json",
+  "n_val": 20,
+  "out": "runs",
+  "name": "pilot_G0.5",
+  "arch": "dncnn",
+  "depth": 17,
+  "width": 64,
+  "patch": 64,
+  "batch": 64,
+  "steps": 3000,
+  "lr": 0.001,
+  "min_lr": 1e-06,
+  "sigma_min": 15.0,
+  "sigma_max": 50.0,
+  "lam": 0.5,
+  "seed": 0,
+  "val_every": 1000,
+  "save_every": 500,
+  "amp": true,
+  "resume": "",
+  "params": 556096,
+  "time_test": false,
+  "overfit_check": false,
+  "run_name": "pilot_G0.5",
+  "arch_cfg": {
+    "in_ch": 1,
+    "depth": 17,
+    "width": 64
+  },
+  "model_description": {
+    "arch": "DnCNN-style residual",
+    "depth": 17,
+    "width": 64,
+    "kernel": 3,
+    "padding": 1,
+    "normalization": "BatchNorm",
+    "target": "noise residual (restored = noisy - predicted noise)",
+    "receptive_field": 35
+  },
+  "hardware": {
+    "device": "cuda",
+    "gpu": "Tesla T4",
+    "torch": "2.11.0+cu128",
+    "python": "3.13.15",
+    "os": "Linux"
+  }
+}

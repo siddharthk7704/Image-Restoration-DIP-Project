@@ -1,0 +1,51 @@
+{
+  "method": "gaussian",
+  "sigma": 50,
+  "params": {
+    "sigma": 1.3274414292574908,
+    "truncate": 3.0
+  },
+  "tune_psnr": 23.68150361604446,
+  "noisy_psnr": 15.007488941274747,
+  "n_trials": 150,
+  "budget": 150,
+  "selection_rule": "maximize mean PSNR over the calibration images, outputs rounded and clipped to 8-bit",
+  "search_space": {
+    "sigma": {
+      "type": "loguniform",
+      "low": 0.3,
+      "high": 3.0
+    },
+    "truncate": {
+      "type": "fixed",
+      "value": 3.0
+    }
+  },
+  "default_trial": {
+    "sigma": 1.0,
+    "truncate": 3.0
+  },
+  "at_bound": [],
+  "calibration_images": [
+    "test023.png",
+    "test028.png",
+    "test031.png",
+    "test032.png",
+    "test033.png",
+    "test046.png",
+    "test049.png",
+    "test061.png"
+  ],
+  "crop": 256,
+  "mode": "L",
+  "quantized_to_8bit": true,
+  "seed": 0,
+  "git_commit": "unknown",
+  "versions": {
+    "numpy": "2.5.4",
+    "python": "3.12.10",
+    "skimage": "0.26.0",
+    "scipy": "1.18.1"
+  },
+  "timestamp": "2026-11-02 20:18:41"
+}

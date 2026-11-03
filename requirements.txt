@@ -1,0 +1,9 @@
+numpy
+pillow
+pyyaml
+scikit-image      # NLM (library-based, label it in the report)
+scipy             # tests only
+pandas
+matplotlib
+pytest
+torch             # training / inference (Kaggle already has it)

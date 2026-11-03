@@ -1,0 +1,16 @@
+{
+  "run": "pilot_G1.0",
+  "steps": 3000,
+  "best_val_mean_psnr": 26.720856121655824,
+  "training_time_s": 390.1,
+  "parameters": 556096,
+  "seed": 0,
+  "lam": 1.0,
+  "hardware": {
+    "device": "cuda",
+    "gpu": "Tesla T4",
+    "torch": "2.11.0+cu128",
+    "python": "3.13.15",
+    "os": "Linux"
+  }
+}

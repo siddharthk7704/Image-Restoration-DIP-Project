@@ -1,9 +1,10 @@
 {
   "run": "pilot_P",
   "steps": 3000,
-  "best_val_mean_psnr": 27.29440222684035,
-  "training_time_s": 380.3,
+  "best_val_mean_psnr": 27.294400892707895,
+  "training_time_s": 358.8,
   "parameters": 556096,
+  "skipped_nonfinite_steps": 0,
   "seed": 0,
   "lam": 0.0,
   "hardware": {

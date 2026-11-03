@@ -40,8 +40,35 @@ def quantize01(x):
 
 
 def psnr01(ref, test, mask=None):
+    """PSNR on [0,1] images. With a mask: PSNR over the masked pixels; NaN (not an exception, not a warning)
+    if the mask selects no pixel."""
     d = (ref.astype(np.float64) - test.astype(np.float64)) ** 2
-    mse = float(d[mask].mean()) if mask is not None else float(d.mean())
+    if mask is not None:
+        if not mask.any():
+            return float("nan")
+        mse = float(d[mask].mean())
+    else:
+        mse = float(d.mean())
+    return 100.0 if mse == 0 else 10.0 * math.log10(1.0 / mse)
+
+
+def masked_sq_error(ref, test, mask):
+    """(sum of squared errors, number of pixels) inside a boolean mask. Both are 0 for an empty mask, so results
+    from many images can be POOLED without producing NaN when a single image has no pixel of that region."""
+    n = int(mask.sum())
+    if n == 0:
+        return 0.0, 0
+    d = (ref.astype(np.float64) - test.astype(np.float64)) ** 2
+    return float(d[mask].sum()), n
+
+
+def pooled_psnr(se_n_pairs):
+    """PSNR from pooled (sum_sq_err, n_pixels) pairs; NaN only if the region is empty in ALL images."""
+    se = sum(p[0] for p in se_n_pairs)
+    n = sum(p[1] for p in se_n_pairs)
+    if n == 0:
+        return float("nan")
+    mse = se / n
     return 100.0 if mse == 0 else 10.0 * math.log10(1.0 / mse)
 
 

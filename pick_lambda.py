@@ -48,8 +48,14 @@ def main():
     ok = [l for l, k in cands if k]
     if ok:
         edge = {l: best_row(dirs[l]).edge_psnr_mean for l in ok}
-        top = max(edge.values())
-        chosen = min(l for l in ok if abs(edge[l] - top) < 1e-9)
+        valid = {l: e for l, e in edge.items() if pd.notna(e)}
+        if not valid:
+            raise SystemExit("edge-region PSNR is nan for every candidate (empty validation edge region?): "
+                             "check the validation masks printed at the start of training")
+        if len(valid) < len(edge):
+            print("note: lambdas with nan edge PSNR are ignored in step 2")
+        top = max(valid.values())
+        chosen = min(l for l in valid if abs(valid[l] - top) < 1e-9)
     else:
         chosen = min(l for l, _ in cands)
     print(f"\nlambda* = {chosen:g}" + ("" if ok else "  (no lambda within tolerance: smallest taken; say so in the report)"))
